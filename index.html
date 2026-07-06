@@ -60,9 +60,9 @@ img{display:block;max-width:100%}
 .hero .bg img{width:100%;height:100%;object-fit:cover;transform:scale(1.07);animation:heroZoom 3.2s var(--ease) forwards}
 @keyframes heroZoom{to{transform:scale(1)}}
 .hero .veil{position:absolute;inset:0;background:linear-gradient(to bottom,var(--scrim-top),rgba(20,22,18,.12) 40%,var(--scrim-bot))}
-.hero .inner{position:relative;padding:110px 20px 90px;max-width:1100px}
+.hero .inner{position:relative;padding:110px 20px 90px}
 .hero .script{font-family:var(--script);font-size:clamp(22px,3.4vw,30px);letter-spacing:.04em;opacity:.95}
-.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(52px,11vw,138px);line-height:1.04;margin:14px 0 20px;text-shadow:0 2px 30px rgba(0,0,0,.18)}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:max(52px,10.6vw);line-height:1.04;white-space:nowrap;margin:14px 0 20px;text-shadow:0 2px 30px rgba(0,0,0,.18)}
 .hero h1 .amp{font-style:italic;font-weight:400}
 .hero .date{font-size:clamp(13px,1.6vw,16px);letter-spacing:.5em;text-transform:uppercase;font-weight:500}
 .hero .count{margin-top:16px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.85}
@@ -79,9 +79,10 @@ img{display:block;max-width:100%}
 /* davis row moment */
 .big-names{padding:clamp(80px,13vh,140px) 0 clamp(60px,9vh,100px);text-align:center;overflow:hidden}
 .big-names .caps{color:var(--clay);display:block;margin-bottom:18px}
-.big-names h2{font-family:var(--serif);font-weight:500;color:var(--clay);font-size:clamp(44px,10.5vw,150px);line-height:1;white-space:nowrap;letter-spacing:.01em}
+.big-names .wrap{max-width:none}
+.big-names h2{font-family:var(--serif);font-weight:500;color:var(--clay);font-size:max(44px,9.6vw);line-height:1;white-space:nowrap;letter-spacing:.01em}
 .big-names h2 .amp{font-style:italic;font-weight:400}
-@media (max-width:640px){.big-names h2{white-space:normal;line-height:1.12}}
+@media (max-width:640px){.big-names h2{white-space:normal;line-height:1.12}.hero h1{white-space:normal}}
 
 /* story */
 .story{padding:clamp(30px,6vh,70px) 0 clamp(90px,13vh,140px)}
