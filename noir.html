@@ -1,0 +1,173 @@
+<!doctype html><html lang="uk"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Аліса × Данило — Noir · Momently</title><style>
+@import url('https://fonts.googleapis.com/css2?family=Prata&family=Golos+Text:wght@400;500&display=swap');
+.nr-root{background:#0E0E0E;color:#F4F2ED;font-family:'Golos Text',system-ui,sans-serif;font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+.nr-root *{margin:0;padding:0;box-sizing:border-box}
+.nr-root ::selection{background:#F4F2ED;color:#0E0E0E}
+.nr-root img{display:block;max-width:100%}
+.nr-root button{font-family:inherit;background:none;border:none;cursor:pointer;color:inherit}
+.nr-wrap{max-width:1160px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+.nr-eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;font-weight:500;opacity:.6;margin-bottom:18px}
+.nr-bar{position:fixed;inset:0 0 auto 0;z-index:80;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:20px;padding:18px clamp(18px,4vw,44px);color:#fff;transition:background .5s,color .5s}
+.nr-bar.on{background:#0E0E0E;box-shadow:0 1px 0 rgba(244,242,237,.22)}
+.nr-mono{font-family:'Prata',serif;font-size:18px;letter-spacing:.1em}
+.nr-links{display:flex;gap:clamp(14px,3vw,32px);justify-content:center}
+.nr-links button{font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;opacity:.85}
+.nr-cta{border:1px solid #fff;padding:11px 24px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;transition:background .3s,color .3s}
+.nr-cta:hover{background:#fff;color:#0E0E0E}
+@media (max-width:720px){.nr-links{display:none}}
+.nr-hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.nr-hero-bg{position:absolute;inset:0;background:#1a1a1a}
+.nr-hero-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06);transform:scale(1.06);animation:nrZoom 3s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes nrZoom{to{transform:scale(1)}}
+.nr-veil{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.5),rgba(10,10,10,.2) 45%,rgba(10,10,10,.62))}
+.nr-hero-in{position:relative;padding:120px 20px}
+.nr-hero h1{font-family:'Prata',serif;font-weight:400;font-size:max(46px,9.4vw);line-height:1.05;white-space:nowrap;color:#fff}
+.nr-hero h1 span{display:inline-block;margin:0 .18em;font-size:.42em;vertical-align:.42em;opacity:.75}
+.nr-date{margin-top:22px;font-size:13px;letter-spacing:.5em;text-transform:uppercase;font-weight:500}
+.nr-count{margin-top:12px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.65}
+@media (max-width:640px){.nr-hero h1{white-space:normal}}
+.nr-marquee{overflow:hidden;border-top:1px solid rgba(244,242,237,.22);border-bottom:1px solid rgba(244,242,237,.22);padding:16px 0}
+.nr-marq-in{display:flex;width:max-content;animation:nrMarq 30s linear infinite;font-family:'Prata',serif;font-size:clamp(18px,2.6vw,26px);white-space:nowrap;opacity:.85}
+@keyframes nrMarq{to{transform:translateX(-50%)}}
+.nr-story{padding:clamp(90px,14vh,150px) 0}
+.nr-grid2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,84px);align-items:center}
+.nr-story h2{font-family:'Prata',serif;font-weight:400;font-size:clamp(28px,3.8vw,44px);line-height:1.25;margin-bottom:22px}
+.nr-body{opacity:.82;max-width:52ch;margin-bottom:12px}
+.nr-ph{aspect-ratio:3/4;overflow:hidden;background:#1a1a1a}
+.nr-ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);transition:filter .9s cubic-bezier(.16,1,.3,1)}
+.nr-ph:hover img{filter:grayscale(0)}
+@media (max-width:820px){.nr-grid2{grid-template-columns:1fr}}
+.nr-day{background:#F4F2ED;color:#0E0E0E;padding:clamp(90px,14vh,150px) 0}
+.nr-day .nr-eyebrow{opacity:.5}
+.nr-daylist{max-width:760px}
+.nr-row{display:flex;align-items:baseline;gap:clamp(20px,4vw,48px);padding:24px 0;border-top:1px solid rgba(14,14,14,.22)}
+.nr-row:last-child{border-bottom:1px solid rgba(14,14,14,.22)}
+.nr-n{font-size:11px;letter-spacing:.2em;opacity:.45;min-width:2em}
+.nr-t{font-family:'Prata',serif;font-size:clamp(26px,4vw,40px);min-width:2.9em}
+.nr-e{font-size:16px;opacity:.85}
+.nr-details{padding:clamp(90px,14vh,150px) 0;border-top:1px solid rgba(244,242,237,.22)}
+.nr-details h3{font-family:'Prata',serif;font-weight:400;font-size:clamp(28px,4vw,44px);margin-bottom:14px}
+.nr-link{display:inline-block;margin-top:18px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;font-weight:500;color:#F4F2ED;text-decoration:none;border-bottom:1px solid #F4F2ED;padding-bottom:5px}
+.nr-bw{display:flex;gap:12px;margin-top:22px}
+.nr-bw i{width:56px;height:56px;border-radius:50%}
+.nr-faq-sec{padding:0 0 clamp(90px,14vh,150px)}
+.nr-faq{max-width:640px}
+.nr-faq details{border-top:1px solid rgba(244,242,237,.22)}
+.nr-faq details:last-child{border-bottom:1px solid rgba(244,242,237,.22)}
+.nr-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font-family:'Prata',serif;font-size:clamp(17px,2.3vw,21px)}
+.nr-faq summary::-webkit-details-marker{display:none}
+.nr-pl{position:relative;width:13px;height:13px;flex:none;transition:transform .4s}
+.nr-pl::before,.nr-pl::after{content:"";position:absolute;background:#F4F2ED}
+.nr-pl::before{left:0;top:6px;width:13px;height:1px}
+.nr-pl::after{left:6px;top:0;width:1px;height:13px}
+.nr-faq details[open] .nr-pl{transform:rotate(45deg)}
+.nr-a{padding:0 0 22px;opacity:.8;max-width:56ch}
+.nr-rsvp{background:#F4F2ED;color:#0E0E0E;padding:clamp(90px,14vh,150px) 0}
+.nr-rsvp-in{max-width:640px}
+.nr-rsvp .nr-eyebrow{opacity:.5}
+.nr-rsvp h2{font-family:'Prata',serif;font-weight:400;font-size:clamp(32px,5vw,52px)}
+.nr-dl{margin:12px 0 34px;font-size:14px;opacity:.65}
+.nr-f{display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;opacity:.55;margin:24px 0 2px}
+.nr-in{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(14,14,14,.22);border-radius:0;padding:12px 2px;font:inherit;color:#0E0E0E;transition:border-color .35s}
+.nr-in:focus{outline:none;border-bottom-color:#0E0E0E}
+.nr-in.err{border-bottom-color:#A33B2B}
+.nr-in::placeholder{color:rgba(14,14,14,.35)}
+.nr-chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+.nr-chip{font-weight:500;font-size:11px;letter-spacing:.26em;text-transform:uppercase;padding:14px 24px;border:1px solid rgba(14,14,14,.22);transition:all .3s}
+.nr-chip.on{background:#0E0E0E;border-color:#0E0E0E;color:#F4F2ED}
+.nr-two{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media (max-width:640px){.nr-two{grid-template-columns:1fr}}
+.nr-send{margin-top:38px;font-weight:500;font-size:11px;letter-spacing:.3em;text-transform:uppercase;padding:18px 42px;background:#0E0E0E;color:#F4F2ED;border:1px solid #0E0E0E;transition:opacity .3s}
+.nr-send:hover{opacity:.85}
+.nr-send:disabled{opacity:.5;cursor:default}
+.nr-err{margin-top:14px;font-size:13px;color:#A33B2B}
+.nr-done-t{font-family:'Prata',serif;font-size:clamp(24px,3.4vw,34px)}
+.nr-done-s{margin-top:10px;opacity:.75}
+.nr-footer{text-align:center;padding:70px 20px 56px;border-top:1px solid rgba(244,242,237,.22)}
+.nr-fs{font-family:'Prata',serif;font-style:italic;font-size:18px;opacity:.7}
+.nr-fn{font-family:'Prata',serif;font-size:24px;letter-spacing:.08em;margin-top:8px}
+.nr-cred{margin-top:26px;font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;opacity:.45}
+.nr-cred a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(244,242,237,.22);padding-bottom:3px}
+.nr-root .rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.nr-root .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.nr-root .rv{opacity:1;transform:none;transition:none}.nr-hero-bg img{animation:none;transform:none}.nr-marq-in{animation:none}}
+
+body{margin:0}</style></head><body class="nr-root">
+<div class="nr-bar" id="nr-topbar">
+  <button class="nr-mono" onclick="go('nr-top')">А—Д</button>
+  <div class="nr-links"><button onclick="go('nr-story')">Історія</button><button onclick="go('nr-day')">Вечір</button><button onclick="go('nr-place')">Деталі</button></div>
+  <button class="nr-cta" onclick="go('nr-rsvp')">RSVP</button>
+</div>
+<header class="nr-hero" id="nr-top">
+  <div class="nr-hero-bg"><img src="https://images.unsplash.com/photo-1563808599481-34a342e44508?auto=format&fit=crop&w=2000&q=80" alt=""></div>
+  <div class="nr-veil"></div>
+  <div class="nr-hero-in">
+    <p class="nr-eyebrow rv">запрошення на весілля</p>
+    <h1 class="rv" style="transition-delay:.1s">Аліса<span>×</span>Данило</h1>
+    <p class="nr-date rv" style="transition-delay:.2s">14 . 02 . 27 — Київ</p>
+    <p class="nr-count rv" style="transition-delay:.3s"><span id="nr-days">220</span> днів до вечора</p>
+  </div>
+</header>
+<div class="nr-marquee" aria-hidden="true"><div class="nr-marq-in"><span>Аліса та Данило — 14 . 02 . 27 — Київ — </span><span>Аліса та Данило — 14 . 02 . 27 — Київ — </span></div></div>
+<section class="nr-story" id="nr-story"><div class="nr-wrap nr-grid2">
+  <div>
+    <p class="nr-eyebrow rv">наша історія</p>
+    <h2 class="rv" style="transition-delay:.08s">Зима, місто і ми двоє — тепер офіційно.</h2>
+    <p class="nr-body rv" style="transition-delay:.16s">Ми познайомилися на виставці, посварилися через Ротко і помирилися за келихом просекко. Через п’ять зим Данило запитав — Аліса сказала «так» раніше, ніж він договорив.</p>
+  </div>
+  <figure class="nr-ph rv" style="transition-delay:.1s"><img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80" alt="" loading="lazy"></figure>
+</div></section>
+<section class="nr-day" id="nr-day"><div class="nr-wrap">
+  <p class="nr-eyebrow rv">розклад вечора</p>
+  <div class="nr-daylist">
+    <div class="nr-row rv"><span class="nr-n">01</span><span class="nr-t">16:00</span><span class="nr-e">Збір гостей</span></div>
+    <div class="nr-row rv" style="transition-delay:.05s"><span class="nr-n">02</span><span class="nr-t">17:00</span><span class="nr-e">Церемонія</span></div>
+    <div class="nr-row rv" style="transition-delay:.1s"><span class="nr-n">03</span><span class="nr-t">18:00</span><span class="nr-e">Коктейлі та джаз</span></div>
+    <div class="nr-row rv" style="transition-delay:.15s"><span class="nr-n">04</span><span class="nr-t">20:00</span><span class="nr-e">Вечеря</span></div>
+    <div class="nr-row rv" style="transition-delay:.2s"><span class="nr-n">05</span><span class="nr-t">23:00</span><span class="nr-e">Танці до ранку</span></div>
+  </div>
+</div></section>
+<section class="nr-details" id="nr-place"><div class="nr-wrap nr-grid2">
+  <div class="rv"><p class="nr-eyebrow">локація</p><h3>Хвильовий Хол</h3><p class="nr-body">вул. Набережно-Хрещатицька, Київ. Паркінг на території.</p><a class="nr-link" href="https://maps.google.com/?q=Kyiv+Podil" target="_blank" rel="noopener">маршрут</a></div>
+  <div class="rv" style="transition-delay:.1s"><p class="nr-eyebrow">дрес-код</p><h3>Black tie</h3><p class="nr-body">Чорне, біле — і жодних компромісів.</p><div class="nr-bw"><i style="background:#0E0E0E;border:1px solid rgba(244,242,237,.3)"></i><i style="background:#F4F2ED"></i></div></div>
+</div></section>
+<section class="nr-faq-sec"><div class="nr-wrap">
+  <p class="nr-eyebrow rv">питання</p>
+  <div class="nr-faq rv">
+    <details><summary>Чи можна з дітьми?<span class="nr-pl"></span></summary><div class="nr-a">Цей вечір — лише для дорослих. Дякуємо за розуміння.</div></details>
+    <details><summary>Що подарувати?<span class="nr-pl"></span></summary><div class="nr-a">Ваша присутність — найкращий подарунок. Для рішучих — конверт.</div></details>
+    <details><summary>До котрої відповісти?<span class="nr-pl"></span></summary><div class="nr-a">До 14 січня 2027. Відповідь можна змінити, відкривши сайт ще раз.</div></details>
+  </div>
+</div></section>
+<section class="nr-rsvp" id="nr-rsvp"><div class="nr-wrap nr-rsvp-in">
+  <p class="nr-eyebrow">rsvp</p><h2>Будете з нами?</h2><p class="nr-dl">Відповідь — до 14 січня 2027.</p>
+  <div class="nr-form" id="nr-form">
+    <label class="nr-f" for="nr-name">Ім’я та прізвище</label>
+    <input id="nr-name" class="nr-in" type="text" placeholder="Оксана Коваль">
+    <label class="nr-f">Присутність</label>
+    <div class="nr-chips"><button type="button" class="nr-chip on" id="nr-yes">Так, буду</button><button type="button" class="nr-chip" id="nr-no">На жаль, ні</button></div>
+    <div class="nr-two" id="nr-extra">
+      <div><label class="nr-f" for="nr-guests">Гостей</label><select id="nr-guests" class="nr-in"><option>1 гість</option><option>2 гості</option></select></div>
+      <div><label class="nr-f" for="nr-wish">Побажання</label><input id="nr-wish" class="nr-in" type="text" placeholder="без горіхів"></div>
+    </div>
+    <button class="nr-send" id="nr-go">Надіслати відповідь</button>
+  </div>
+  <div id="nr-done" style="display:none"><p class="nr-done-t" id="nr-dt">Дякуємо.</p><p class="nr-done-s" id="nr-ds">Чекаємо на вас.</p></div>
+</div></section>
+<footer class="nr-footer"><p class="nr-fs">до зустрічі,</p><p class="nr-fn">Аліса та Данило</p><p class="nr-cred">створено на <a href="https://momently.co" target="_blank" rel="noopener">momently.co</a></p></footer>
+<script>
+function rvInit(root){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14});document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});}
+function daysTo(iso,id){var d=Math.max(0,Math.floor((new Date(iso)-Date.now())/86400000));var el=document.getElementById(id);if(el)el.textContent=d;}
+function go(id){var t=document.getElementById(id);if(t)t.scrollIntoView({behavior:'smooth'});}
+
+daysTo('2027-02-14T17:00:00+02:00','nr-days');rvInit();
+var bar=document.getElementById('nr-topbar'),hero=document.getElementById('nr-top');
+new IntersectionObserver(function(es){bar.classList.toggle('on',!es[0].isIntersecting)},{rootMargin:'-80px 0px 0px 0px'}).observe(hero);
+var att=true,yes=document.getElementById('nr-yes'),no=document.getElementById('nr-no'),extra=document.getElementById('nr-extra');
+function paint(){yes.classList.toggle('on',att);no.classList.toggle('on',!att);extra.style.display=att?'grid':'none';}
+yes.onclick=function(){att=true;paint()};no.onclick=function(){att=false;paint()};paint();
+document.getElementById('nr-go').onclick=function(){var n=document.getElementById('nr-name');if(!n.value.trim()){n.classList.add('err');n.focus();return;}
+document.getElementById('nr-form').style.display='none';var dn=document.getElementById('nr-done');
+document.getElementById('nr-dt').textContent=att?('Дякуємо, '+n.value.trim()+'.'):('Дякуємо за відповідь, '+n.value.trim()+'.');
+document.getElementById('nr-ds').textContent=att?'Чекаємо на вас. Буде красиво.':'Шкода — але ви будете з нами подумки.';dn.style.display='block';};
+</script></body></html>
