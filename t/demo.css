@@ -1359,6 +1359,9 @@ video {
 .rounded-lg {
   border-radius: 0.5rem;
 }
+.rounded-none {
+  border-radius: 0px;
+}
 .rounded-xl {
   border-radius: 12px;
 }
@@ -2018,6 +2021,12 @@ video {
 .text-\[9px\] {
   font-size: 9px;
 }
+.text-\[clamp\(2\.2rem\2c 4\.6vw\2c 3\.4rem\)\] {
+  font-size: clamp(2.2rem,4.6vw,3.4rem);
+}
+.text-\[clamp\(2\.6rem\2c 6vw\2c 4\.5rem\)\] {
+  font-size: clamp(2.6rem,6vw,4.5rem);
+}
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -2375,11 +2384,6 @@ video {
 .shadow-\[0_-8px_30px_rgba\(26\2c 28\2c 26\2c 0\.04\)\] {
   --tw-shadow: 0 -8px 30px rgba(26,28,26,0.04);
   --tw-shadow-colored: 0 -8px 30px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-.shadow-inner {
-  --tw-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: inset 0 2px 4px 0 var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .shadow-lg {
@@ -3104,11 +3108,6 @@ video {
     line-height: 1;
   }
 
-  .md\:text-7xl {
-    font-size: 4.5rem;
-    line-height: 1;
-  }
-
   .md\:text-8xl {
     font-size: 6rem;
     line-height: 1;
@@ -3121,6 +3120,18 @@ video {
 
   .md\:text-\[15vw\] {
     font-size: 15vw;
+  }
+
+  .md\:text-\[clamp\(2\.2rem\2c 4\.6vw\2c 3\.4rem\)\] {
+    font-size: clamp(2.2rem,4.6vw,3.4rem);
+  }
+
+  .md\:text-\[clamp\(2\.6rem\2c 6vw\2c 4\.5rem\)\] {
+    font-size: clamp(2.6rem,6vw,4.5rem);
+  }
+
+  .md\:text-\[clamp\(4rem\2c 11vw\2c 9\.5rem\)\] {
+    font-size: clamp(4rem,11vw,9.5rem);
   }
 
   .md\:text-lg {
