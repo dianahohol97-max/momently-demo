@@ -2512,9 +2512,12 @@ video {
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
-  .font-display { font-family: var(--font-display); }
-  .font-serif   { font-family: var(--font-serif); }
-  .font-body    { font-family: var(--font-body); }
+  .font-display  { font-family: var(--font-display); }
+  .font-serif    { font-family: var(--font-serif); }
+  .font-body     { font-family: var(--font-body); }
+  .font-headline { font-family: var(--font-headline, var(--font-serif)); }
+  .font-accent   { font-family: var(--font-accent, var(--font-serif)); }
+  .font-label    { font-family: var(--font-label, var(--font-body)); }
   .placeholder\:text-\[\#7f756a\]\/40::placeholder {
   color: rgb(127 117 106 / 0.4);
 }
