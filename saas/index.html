@@ -1,0 +1,554 @@
+<title>Momently — весільні сайти-запрошення</title>
+<meta name="description" content="Оберіть дизайн, наповніть своїми фото та історією, поділіться персональним сайтом-запрошенням і збирайте RSVP онлайн.">
+<style>
+:root{
+  --paper:#FAF7F1; --ground:#FAF7F1; --card:#FFFDF8;
+  --ink:#23241F; --muted:rgba(35,36,31,.60); --faint:rgba(35,36,31,.40);
+  --clay:#B7674B; --clay-2:#a1583e; --sage:#7E8A72; --stone:#E6DFD2;
+  --line:rgba(35,36,31,.13); --line-strong:rgba(35,36,31,.24);
+  --shadow:0 24px 60px -30px rgba(60,40,25,.35);
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  --sans:system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+  --mono:ui-monospace,'SF Mono','Cascadia Code','Roboto Mono',Menlo,monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#141310; --ground:#141310; --card:#1C1B15;
+    --ink:#F1ECE1; --muted:rgba(241,236,225,.62); --faint:rgba(241,236,225,.42);
+    --clay:#CE855F; --clay-2:#e0a382; --sage:#9BA98C; --stone:rgba(241,236,225,.16);
+    --line:rgba(241,236,225,.14); --line-strong:rgba(241,236,225,.26);
+    --shadow:0 30px 70px -34px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="light"]{
+  --paper:#FAF7F1; --ground:#FAF7F1; --card:#FFFDF8;
+  --ink:#23241F; --muted:rgba(35,36,31,.60); --faint:rgba(35,36,31,.40);
+  --clay:#B7674B; --sage:#7E8A72; --stone:#E6DFD2;
+  --line:rgba(35,36,31,.13); --line-strong:rgba(35,36,31,.24);
+  --shadow:0 24px 60px -30px rgba(60,40,25,.35);
+}
+:root[data-theme="dark"]{
+  --paper:#141310; --ground:#141310; --card:#1C1B15;
+  --ink:#F1ECE1; --muted:rgba(241,236,225,.62); --faint:rgba(241,236,225,.42);
+  --clay:#CE855F; --clay-2:#e0a382; --sage:#9BA98C; --stone:rgba(241,236,225,.16);
+  --line:rgba(241,236,225,.14); --line-strong:rgba(241,236,225,.26);
+  --shadow:0 30px 70px -34px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:500;text-wrap:balance;margin:0}
+p{margin:0}
+::selection{background:var(--clay);color:#fff}
+:focus-visible{outline:2px solid var(--clay);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--clay)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.amp{font-style:italic}
+
+/* buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:.6em;cursor:pointer;text-decoration:none;
+  font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  padding:15px 28px;border:1px solid var(--ink);color:var(--ink);background:transparent;
+  border-radius:0;transition:background .35s var(--ease),color .35s var(--ease),transform .2s var(--ease);
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--ink);color:var(--ground)}
+.btn-solid:hover{background:var(--clay);border-color:var(--clay);color:#fff}
+.btn-ghost:hover{background:var(--ink);color:var(--ground)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--ground) 88%,transparent);
+  backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .4s,background .4s}
+.nav.solid{border-color:var(--line)}
+.nav .row{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 0}
+.brand{font-family:var(--serif);font-size:23px;letter-spacing:.02em;text-decoration:none;display:flex;align-items:baseline;gap:.5ch}
+.brand .dot{width:7px;height:7px;border-radius:50%;background:var(--clay);display:inline-block}
+.nav-links{display:flex;gap:clamp(16px,2.4vw,34px)}
+.nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .25s}
+.nav-links a:hover{color:var(--ink)}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.theme-btn{font-family:var(--mono);font-size:15px;background:none;border:1px solid var(--line-strong);color:var(--ink);
+  width:38px;height:38px;border-radius:50%;cursor:pointer;display:grid;place-items:center;transition:border-color .25s,transform .3s}
+.theme-btn:hover{border-color:var(--clay);transform:rotate(20deg)}
+@media (max-width:880px){.nav-links{display:none}}
+
+/* hero */
+.hero{position:relative;padding:clamp(48px,9vh,110px) 0 clamp(40px,7vh,80px)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(30px,5vw,72px);align-items:center}
+.hero-grid>*{min-width:0}
+.hero h1{font-size:clamp(40px,6.6vw,78px);line-height:1.03;letter-spacing:-.01em;margin:20px 0 22px}
+.hero h1 em{font-style:italic;color:var(--clay)}
+.hero .lede{font-size:clamp(17px,1.5vw,19px);color:var(--muted);max-width:46ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:22px 30px;margin-top:38px;padding-top:26px;border-top:1px solid var(--line)}
+.hero-meta div{min-width:80px}
+.hero-meta b{font-family:var(--serif);font-size:28px;display:block;line-height:1}
+.hero-meta span{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.hero-visual{order:-1}}
+
+/* invitation card mock */
+.card-mock{position:relative;margin:0 auto;max-width:420px}
+.browser{background:var(--card);border:1px solid var(--line-strong);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.browser-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.browser-bar i{width:10px;height:10px;border-radius:50%;background:var(--line-strong)}
+.browser-bar .url{margin-left:12px;font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.04em}
+.invite{position:relative;aspect-ratio:3/3.7;background:
+  radial-gradient(120% 90% at 50% -10%,#c9b7a4 0%,#8a7a68 42%,#3f3a32 100%);
+  color:#fdfbf6;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:34px 26px;overflow:hidden}
+.invite::after{content:"";position:absolute;inset:14px;border:1px solid rgba(253,251,246,.4)}
+.invite .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.34em;text-transform:uppercase;opacity:.85}
+.invite .sc{font-family:var(--serif);font-style:italic;font-size:16px;opacity:.92;margin:16px 0 6px}
+.invite h4{font-family:var(--serif);font-weight:500;font-size:clamp(30px,7vw,44px);line-height:1.02;margin:0}
+.invite h4 .amp{font-style:italic;font-weight:400}
+.invite .dt{font-family:var(--mono);font-size:11px;letter-spacing:.4em;margin-top:16px;opacity:.9}
+.invite .rsvp{margin-top:22px;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  border:1px solid rgba(253,251,246,.7);padding:9px 20px}
+.tag{position:absolute;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  background:var(--card);color:var(--ink);border:1px solid var(--line-strong);padding:8px 13px;border-radius:100px;box-shadow:var(--shadow)}
+.tag.t1{top:-14px;left:-6px}
+.tag.t2{bottom:34px;right:-6px}
+@media (max-width:420px){.tag{font-size:9px;padding:6px 10px}.tag.t1{left:0}.tag.t2{right:0}}
+.tag i{color:var(--sage)}
+
+/* section scaffold */
+section{padding:clamp(64px,10vh,120px) 0}
+.sec-head{max-width:640px;margin-bottom:clamp(34px,5vh,58px)}
+.sec-head h2{font-size:clamp(30px,4.4vw,50px);line-height:1.06;margin:14px 0 0}
+.sec-head p{color:var(--muted);margin-top:16px;font-size:18px}
+.center{margin-left:auto;margin-right:auto;text-align:center}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.4vw,30px)}
+.step{border-top:2px solid var(--ink);padding-top:22px}
+.step .no{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--clay)}
+.step h3{font-size:24px;margin:16px 0 10px}
+.step p{color:var(--muted);font-size:16px}
+@media (max-width:760px){.steps{grid-template-columns:1fr;gap:8px}.step{border-top:1px solid var(--line);padding-top:20px;margin-top:10px}}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,26px)}
+@media (max-width:900px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.gallery{grid-template-columns:1fr}}
+.tpl{text-decoration:none;color:inherit;display:flex;flex-direction:column;border:1px solid var(--line);
+  background:var(--card);border-radius:12px;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s}
+.tpl:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--line-strong)}
+.tpl .thumb{aspect-ratio:4/3.4;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:26px 18px;position:relative;overflow:hidden}
+.tpl .thumb::after{content:"";position:absolute;inset:12px;border:1px solid currentColor;opacity:.32}
+.tpl .thumb .tk{font-family:var(--mono);font-size:8.5px;letter-spacing:.3em;text-transform:uppercase;opacity:.72}
+.tpl .thumb .nm{font-family:var(--serif);font-size:clamp(21px,2.4vw,27px);line-height:1.05;margin:12px 0 6px}
+.tpl .thumb .nm .amp{font-style:italic}
+.tpl .thumb .dd{font-family:var(--mono);font-size:9px;letter-spacing:.28em;opacity:.8}
+.tpl .meta{display:flex;align-items:center;justify-content:space-between;padding:15px 18px;border-top:1px solid var(--line)}
+.tpl .meta .n{font-family:var(--serif);font-size:18px}
+.tpl .meta .s{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tpl .meta .go{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--clay);white-space:nowrap}
+
+/* features */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.feat .f{background:var(--card);padding:30px clamp(20px,2vw,30px)}
+.feat .f .fi{font-family:var(--mono);font-size:12px;color:var(--clay);letter-spacing:.14em}
+.feat .f h3{font-size:20px;margin:14px 0 8px}
+.feat .f p{color:var(--muted);font-size:15px;line-height:1.55}
+@media (max-width:820px){.feat{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.feat{grid-template-columns:1fr}}
+
+/* editor mock */
+.editor{background:var(--card);border:1px solid var(--line-strong);border-radius:18px;overflow:hidden;box-shadow:var(--shadow);
+  display:grid;grid-template-columns:1fr 1fr}
+.editor .pane{padding:clamp(24px,3vw,40px)}
+.editor .left{border-right:1px solid var(--line)}
+.editor .pane-k{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.editor .pane-k b{width:6px;height:6px;border-radius:50%;background:var(--clay)}
+.field{margin-bottom:18px}
+.field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+.field .inp{border:1px solid var(--line-strong);border-radius:8px;padding:12px 14px;font-family:var(--serif);font-size:18px;background:var(--ground)}
+.field .inp.small{font-family:var(--sans);font-size:14px;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.drop{border:1.5px dashed var(--line-strong);border-radius:10px;padding:22px;text-align:center;color:var(--muted);font-size:13px;font-family:var(--mono);letter-spacing:.04em}
+.drop b{display:block;color:var(--clay);font-size:22px;margin-bottom:6px;font-family:var(--serif)}
+.editor .right{background:
+  linear-gradient(0deg,rgba(20,17,12,.05),rgba(20,17,12,.05)),
+  radial-gradient(120% 80% at 50% 0%,#cdbba6,#7c6c59 55%,#33302a);color:#fdfbf6;display:flex;align-items:center;justify-content:center}
+.mini-invite{text-align:center;padding:30px}
+.mini-invite .k{font-family:var(--mono);font-size:9px;letter-spacing:.3em;text-transform:uppercase;opacity:.85}
+.mini-invite .sc{font-family:var(--serif);font-style:italic;font-size:15px;margin:14px 0 4px;opacity:.9}
+.mini-invite h4{font-family:var(--serif);font-weight:500;font-size:clamp(26px,4vw,40px);line-height:1.03;margin:0}
+.mini-invite .dt{font-family:var(--mono);font-size:10px;letter-spacing:.34em;margin-top:14px;opacity:.9}
+.mini-invite .live{margin-top:20px;font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;display:inline-flex;align-items:center;gap:7px;opacity:.9}
+.mini-invite .live i{width:6px;height:6px;border-radius:50%;background:#8fd694;box-shadow:0 0 0 0 rgba(143,214,148,.7);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 8px rgba(143,214,148,0)}100%{box-shadow:0 0 0 0 rgba(143,214,148,0)}}
+@media (max-width:760px){.editor{grid-template-columns:1fr}.editor .left{border-right:0;border-bottom:1px solid var(--line)}.editor .right{min-height:340px}}
+
+/* pricing */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px);align-items:stretch}
+.plan{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:clamp(26px,2.6vw,34px);display:flex;flex-direction:column}
+.plan.feature{border-color:var(--clay);box-shadow:var(--shadow);position:relative}
+.plan .badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--clay);color:#fff;font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;padding:6px 14px;border-radius:100px}
+.plan .pk{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.plan .price{font-family:var(--serif);font-size:46px;line-height:1;margin:16px 0 4px;font-variant-numeric:tabular-nums}
+.plan .price small{font-size:15px;color:var(--muted);font-family:var(--mono);letter-spacing:.02em}
+.plan .desc{color:var(--muted);font-size:14px;min-height:40px}
+.plan ul{list-style:none;padding:0;margin:22px 0 26px;display:flex;flex-direction:column;gap:11px}
+.plan li{position:relative;padding-left:26px;font-size:15px;color:var(--ink)}
+.plan li::before{content:"";position:absolute;left:0;top:.62em;width:11px;height:6px;border-left:1.6px solid var(--clay);border-bottom:1.6px solid var(--clay);transform:rotate(-45deg)}
+.plan .btn{justify-content:center;margin-top:auto}
+@media (max-width:820px){.plans{grid-template-columns:1fr}.plan.feature{order:-1}}
+
+/* testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,26px)}
+.quote{border:1px solid var(--line);border-radius:14px;padding:28px;background:var(--card)}
+.quote p{font-family:var(--serif);font-size:19px;line-height:1.5}
+.quote .by{margin-top:20px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.quote .by b{color:var(--ink);font-weight:500}
+@media (max-width:820px){.quotes{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:780px;margin:0 auto}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;
+  padding:22px 0;font-family:var(--serif);font-size:clamp(18px,2vw,22px)}
+.faq summary::-webkit-details-marker{display:none}
+.faq .pl{position:relative;width:14px;height:14px;flex:none;transition:transform .35s var(--ease)}
+.faq .pl::before,.faq .pl::after{content:"";position:absolute;background:var(--clay)}
+.faq .pl::before{left:0;top:6.5px;width:14px;height:1.5px}
+.faq .pl::after{left:6.5px;top:0;width:1.5px;height:14px}
+.faq details[open] .pl{transform:rotate(45deg)}
+.faq .a{padding:0 0 24px;color:var(--muted);max-width:64ch}
+
+/* cta band */
+.cta-band{background:var(--ink);color:var(--ground);border-radius:20px;padding:clamp(44px,6vw,76px);text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:"";position:absolute;inset:0;background:radial-gradient(80% 120% at 50% -20%,rgba(183,103,75,.35),transparent 60%)}
+.cta-band > *{position:relative}
+.cta-band h2{color:var(--ground);font-size:clamp(30px,5vw,54px);line-height:1.04}
+.cta-band h2 em{font-style:italic;color:var(--clay-2,#e0a382)}
+.cta-band p{color:color-mix(in srgb,var(--ground) 72%,transparent);margin:16px auto 0;max-width:44ch}
+.cta-band .btn{margin-top:32px;border-color:var(--ground);color:var(--ink);background:var(--ground)}
+.cta-band .btn:hover{background:var(--clay);border-color:var(--clay);color:#fff}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:52px 0 40px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;align-items:flex-start}
+.foot .brand{font-size:22px}
+.foot .cols{display:flex;gap:clamp(30px,6vw,80px);flex-wrap:wrap}
+.foot .col h5{font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin:0 0 14px}
+.foot .col a{display:block;text-decoration:none;color:var(--muted);font-size:14px;margin-bottom:9px;transition:color .2s}
+.foot .col a:hover{color:var(--clay)}
+.foot-base{margin-top:40px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--faint)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+
+<nav class="nav" id="nav">
+  <div class="wrap row">
+    <a class="brand" href="#top"><span>Momently</span><span class="dot"></span></a>
+    <div class="nav-links">
+      <a href="#how">Як це працює</a>
+      <a href="#gallery">Шаблони</a>
+      <a href="#features">Можливості</a>
+      <a href="#pricing">Ціни</a>
+      <a href="#faq">Питання</a>
+    </div>
+    <div class="nav-cta">
+      <button class="theme-btn" id="theme" aria-label="Змінити тему">◐</button>
+      <a class="btn btn-solid" href="#pricing">Обрати шаблон</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow rv">Весільні сайти-запрошення</span>
+      <h1 class="rv">Ваше весілля заслуговує на <em>власний сайт.</em></h1>
+      <p class="lede rv">Оберіть один із дванадцяти дизайнів, додайте свої фото, історію та розклад — і поділіться персональним запрошенням. Гості підтверджують присутність онлайн, а ви бачите всі відповіді в одному місці.</p>
+      <div class="hero-cta rv">
+        <a class="btn btn-solid" href="#gallery">Обрати шаблон</a>
+        <a class="btn btn-ghost" href="https://momently-final.vercel.app/" target="_blank" rel="noopener">Живе демо ↗</a>
+      </div>
+      <div class="hero-meta rv">
+        <div><b class="mono">12</b><span>дизайнів</span></div>
+        <div><b class="mono">15 хв</b><span>до публікації</span></div>
+        <div><b class="mono">RSVP</b><span>онлайн</span></div>
+        <div><b class="mono">QR</b><span>та піддомен</span></div>
+      </div>
+    </div>
+    <div class="hero-visual rv">
+      <div class="card-mock">
+        <span class="tag t1">solomiya-marko<i>.momently.co</i></span>
+        <div class="browser">
+          <div class="browser-bar"><i></i><i></i><i></i><span class="url">momently.co/solomiya-marko</span></div>
+          <div class="invite">
+            <div class="k">Запрошення на весілля</div>
+            <div class="sc">ми одружуємось</div>
+            <h4>Соломія <span class="amp">&amp;</span> Марко</h4>
+            <div class="dt">10 · 10 · 26</div>
+            <div class="rsvp">Підтвердити присутність</div>
+          </div>
+        </div>
+        <span class="tag t2"><i>●</i> 148 відповіли «так»</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Як це працює</span>
+      <h2>Від ідеї до готового сайту — три кроки.</h2>
+      <p>Жодного коду й дизайнерів. Усе робиться у зручному редакторі просто в браузері.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><div class="no">Крок 01</div><h3>Оберіть шаблон</h3><p>Дванадцять дизайнів — від мінімалістичного чорно-білого до садового й золотого. Обирайте настрій, який відчувається вашим.</p></div>
+      <div class="step rv" style="transition-delay:.08s"><div class="no">Крок 02</div><h3>Наповніть своїм</h3><p>Додайте свої фото, історію знайомства, розклад дня, локацію та дрес-код. Усе оновлюється наживо, поки ви друкуєте.</p></div>
+      <div class="step rv" style="transition-delay:.16s"><div class="no">Крок 03</div><h3>Поділіться</h3><p>Отримайте персональне посилання та QR-код. Розсилайте гостям і збирайте підтвердження присутності онлайн.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Колекція шаблонів</span>
+      <h2>Дванадцять дизайнів на будь-який настрій.</h2>
+      <p>Кожен шаблон — це повноцінний сайт: історія, розклад, галерея, локація, FAQ і форма RSVP. Натисніть, щоб відкрити живе демо.</p>
+    </div>
+    <div class="gallery" id="grid"></div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Що всередині</span>
+      <h2>Усе, що потрібно для весільного запрошення.</h2>
+    </div>
+    <div class="feat">
+      <div class="f rv"><div class="fi">01</div><h3>Ваші фото та галерея</h3><p>Головне фото, галерея зі спільних миттєвостей і портрети пари — завантажте прямо з телефона.</p></div>
+      <div class="f rv"><div class="fi">02</div><h3>Ваша історія</h3><p>Розкажіть, як усе почалося, у форматі тексту й таймлайну з ключовими датами.</p></div>
+      <div class="f rv"><div class="fi">03</div><h3>Розклад дня</h3><p>Церемонія, фуршет, вечеря, перший танець — гості завжди знають, що і коли.</p></div>
+      <div class="f rv"><div class="fi">04</div><h3>Форма RSVP</h3><p>Присутність, кількість гостей, вибір меню, алергії та побажання щодо пісні — усе в одній формі.</p></div>
+      <div class="f rv"><div class="fi">05</div><h3>Лічильник і календар</h3><p>Зворотний відлік до дати та кнопка «Додати в календар» одним дотиком.</p></div>
+      <div class="f rv"><div class="fi">06</div><h3>Локація та маршрут</h3><p>Карта, адреса й кнопка прокладання маршруту та інформація про трансфер.</p></div>
+      <div class="f rv"><div class="fi">07</div><h3>Дрес-код і палітра</h3><p>Підкажіть гостям стиль вечора та кольорову палітру святкування.</p></div>
+      <div class="f rv"><div class="fi">08</div><h3>Свій піддомен і QR</h3><p><span class="mono">ваші-імена.momently.co</span> та готовий QR-код для друкованих запрошень.</p></div>
+      <div class="f rv"><div class="fi">09</div><h3>Ідеально на телефоні</h3><p>Більшість гостей відкриють запрошення з телефона — усе виглядає бездоганно.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="editor" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Редактор</span>
+      <h2>Наповнюйте своїм — і бачте результат наживо.</h2>
+      <p>Ліворуч ви редагуєте, праворуч сайт оновлюється в ту ж мить. Жодного очікування й попереднього перегляду навмання.</p>
+    </div>
+    <div class="editor rv">
+      <div class="pane left">
+        <div class="pane-k"><b></b>Ваш контент</div>
+        <div class="two">
+          <div class="field"><label>Наречена</label><div class="inp">Соломія</div></div>
+          <div class="field"><label>Наречений</label><div class="inp">Марко</div></div>
+        </div>
+        <div class="two">
+          <div class="field"><label>Дата</label><div class="inp">10.10.2026</div></div>
+          <div class="field"><label>Місто</label><div class="inp">Львів</div></div>
+        </div>
+        <div class="field"><label>Ваша історія</label><div class="inp small">Усе почалося з випадкової кави на Вірменській…</div></div>
+        <div class="field"><label>Фото пари</label>
+          <div class="drop"><b>＋</b>Перетягніть фото сюди або оберіть із телефона</div>
+        </div>
+      </div>
+      <div class="pane right">
+        <div class="mini-invite">
+          <div class="k">Запрошення на весілля</div>
+          <div class="sc">ми одружуємось</div>
+          <h4>Соломія <span class="amp">&amp;</span> Марко</h4>
+          <div class="dt">10 · 10 · 26 · ЛЬВІВ</div>
+          <div class="live"><i></i>оновлюється наживо</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Ціни</span>
+      <h2>Один раз заплатили — сайт ваш.</h2>
+      <p>Без щомісячних платежів. Оплата разова, а сайт лишається активним до вашого весілля й після нього.</p>
+    </div>
+    <div class="plans">
+      <div class="plan rv">
+        <div class="pk">Один сайт</div>
+        <div class="price mono">690<small> ₴</small></div>
+        <div class="desc">Ідеально, щоб зробити одне бездоганне запрошення.</div>
+        <ul>
+          <li>Будь-який із 12 шаблонів</li>
+          <li>Свій контент і фото</li>
+          <li>Форма RSVP та експорт відповідей</li>
+          <li>Піддомен momently.co</li>
+          <li>Хостинг на 1 рік</li>
+        </ul>
+        <a class="btn btn-ghost" href="#gallery">Почати</a>
+      </div>
+      <div class="plan feature rv" style="transition-delay:.08s">
+        <span class="badge">Найпопулярніший</span>
+        <div class="pk">Преміум</div>
+        <div class="price mono">1290<small> ₴</small></div>
+        <div class="desc">Повна свобода — власний домен і жодного брендингу.</div>
+        <ul>
+          <li>Усе з тарифу «Один сайт»</li>
+          <li>Власний домен</li>
+          <li>Необмежені фото й галерея</li>
+          <li>Кілька мов запрошення</li>
+          <li>Без згадки Momently</li>
+          <li>Пріоритетна підтримка</li>
+        </ul>
+        <a class="btn btn-solid" href="#gallery">Обрати шаблон</a>
+      </div>
+      <div class="plan rv" style="transition-delay:.16s">
+        <div class="pk">Студія</div>
+        <div class="price mono">4 900<small> ₴/рік</small></div>
+        <div class="desc">Для весільних агенцій та організаторів.</div>
+        <ul>
+          <li>До 20 сайтів на рік</li>
+          <li>Брендинг вашої агенції</li>
+          <li>Спільний доступ команди</li>
+          <li>Ранній доступ до нових шаблонів</li>
+          <li>Персональний менеджер</li>
+        </ul>
+        <a class="btn btn-ghost" href="#contact">Зв'язатися</a>
+      </div>
+    </div>
+    <p class="mono rv" style="text-align:center;margin-top:22px;font-size:11px;letter-spacing:.06em;color:var(--faint)">Ціни орієнтовні — легко змінюються під вашу бізнес-модель.</p>
+  </div>
+</section>
+
+<section id="reviews" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="eyebrow">Відгуки пар</span>
+      <h2>Понад чотири тисячі пар уже запросили гостей.</h2>
+    </div>
+    <div class="quotes">
+      <div class="quote rv"><p>«Зробили сайт за один вечір і розіслали замість паперових. Гості у захваті, а ми за тиждень зібрали всі відповіді.»</p><div class="by"><b>Оксана та Ілля</b> · Київ</div></div>
+      <div class="quote rv" style="transition-delay:.08s"><p>«Обрали Noir — виглядає як із глянцю. Найбільше врятувала форма RSVP: більше жодних дзвінків «ти будеш?».»</p><div class="by"><b>Аліса та Данило</b> · Одеса</div></div>
+      <div class="quote rv" style="transition-delay:.16s"><p>«Я весільний організатор і роблю сайти клієнтам на тарифі «Студія». Швидко, красиво й завжди в межах бренду.»</p><div class="by"><b>Марія</b> · весільна агенція</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <span class="eyebrow">Питання</span>
+      <h2>Часті запитання</h2>
+    </div>
+    <div class="faq rv">
+      <details open><summary>Чи потрібні технічні навички?<span class="pl"></span></summary><div class="a">Ні. Ви заповнюєте прості поля — імена, дату, історію, фото — а сайт збирається сам. Це схоже на заповнення анкети, лише результат одразу красивий.</div></details>
+      <details><summary>Скільки часу сайт лишається активним?<span class="pl"></span></summary><div class="a">Мінімум рік із моменту публікації на всіх тарифах. Цього вистачає на підготовку, саме свято й спогади після нього. Термін легко продовжити.</div></details>
+      <details><summary>Чи можна редагувати після публікації?<span class="pl"></span></summary><div class="a">Так, скільки завгодно разів. Змінили локацію чи час — оновили поле, і сайт миттєво показує актуальну інформацію всім гостям.</div></details>
+      <details><summary>Як гості підтверджують присутність?<span class="pl"></span></summary><div class="a">Просто на сайті: обирають «Так» або «Ні», кількість гостей, меню й лишають побажання. Усі відповіді збираються у вашому кабінеті — з експортом у таблицю.</div></details>
+      <details><summary>Чи можна підключити власний домен?<span class="pl"></span></summary><div class="a">Так, на тарифах «Преміум» і «Студія». На базовому ви отримуєте гарний піддомен виду <span class="mono">ваші-імена.momently.co</span>.</div></details>
+      <details><summary>А якщо не сподобається?<span class="pl"></span></summary><div class="a">Повертаємо кошти протягом 14 днів, якщо ви ще не опублікували сайт. Спробувати редактор і подивитися демо можна безкоштовно.</div></details>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-band rv">
+      <h2>Створімо ваше <em>запрошення</em> сьогодні.</h2>
+      <p>Оберіть шаблон, наповніть своїм — і вже за вечір діліться персональним сайтом із гостями.</p>
+      <a class="btn" href="#gallery">Обрати шаблон</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><span>Momently</span><span class="dot"></span></a>
+        <p class="mono" style="font-size:12px;color:var(--muted);margin-top:12px;max-width:26ch;letter-spacing:.02em">Весільні сайти-запрошення, які хочеться зберегти.</p>
+      </div>
+      <div class="cols">
+        <div class="col"><h5>Продукт</h5><a href="#gallery">Шаблони</a><a href="#features">Можливості</a><a href="#pricing">Ціни</a><a href="#how">Як це працює</a></div>
+        <div class="col"><h5>Компанія</h5><a href="#reviews">Відгуки</a><a href="#faq">Питання</a><a href="#contact">Контакти</a></div>
+        <div class="col"><h5>Почати</h5><a href="#pricing">Обрати шаблон</a><a href="https://momently-final.vercel.app/" target="_blank" rel="noopener">Живе демо ↗</a></div>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Momently</span>
+      <span>momently.co · Зроблено в Україні</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Template catalogue — each links to its live demo.
+var BASE="https://momently-final.vercel.app/";
+var T=[
+ {n:"Field & Serif",s:"фоторедакторський",c:"Соломія",c2:"Марко",k:"еталон",bg:"linear-gradient(160deg,#f3ece0,#e2d6c4)",fg:"#2a251d",ac:"#B7674B",f:"field-serif.html"},
+ {n:"Noir",s:"чорно-біла мода",c:"Аліса",c2:"Данило",am:"×",k:"black tie",bg:"#0e0e0e",fg:"#f4f2ed",ac:"#f4f2ed",f:"noir.html"},
+ {n:"Botanique",s:"садовий, шавлія",c:"Ірина",c2:"Остап",k:"garden",bg:"linear-gradient(160deg,#eef1e6,#dbe2cd)",fg:"#2b3122",ac:"#55603F",f:"botanique.html"},
+ {n:"Côte d'Azur",s:"чорно-біле узбережжя",c:"Ліна",c2:"Роман",k:"coastal",bg:"linear-gradient(160deg,#efefec,#dcdcd6)",fg:"#1a1c1c",ac:"#1a1c1c",f:"cote-dazur.html"},
+ {n:"Il Monografo",s:"редакторський чорний",c:"Лев",c2:"Ія",k:"editorial",bg:"#131313",fg:"#ececec",ac:"#c98a5a",f:"il-monografo.html"},
+ {n:"Lago d'Oro",s:"тепле золото",c:"Матвій",c2:"Злата",k:"gold",bg:"linear-gradient(160deg,#f6efe1,#eaddc2)",fg:"#4a3c22",ac:"#b58a4b",f:"lago-doro.html"},
+ {n:"The Manor",s:"темна романтика",c:"Каміла",c2:"Артем",k:"ancestral",bg:"linear-gradient(160deg,#1d1c16,#131109)",fg:"#e9e2d4",ac:"#c99a6a",f:"the-manor.html"},
+ {n:"Le Voyage",s:"весілля-подорож",c:"Марта",c2:"Богдан",k:"destination",bg:"linear-gradient(160deg,#f2eee4,#e4dcc9)",fg:"#33302a",ac:"#9c7a4d",f:"le-voyage.html"},
+ {n:"The Digital Salon",s:"пудра й золото",c:"Емілія",c2:"Владислав",k:"blush",bg:"linear-gradient(160deg,#f6e7e3,#efd8d1)",fg:"#5a3a3a",ac:"#c6a15b",f:"the-digital-salon.html"},
+ {n:"The Stationery",s:"глибокий синій",c:"Софія",c2:"Максим",k:"navy",bg:"linear-gradient(160deg,#1f2d3d,#16212e)",fg:"#eae3d6",ac:"#c9b48a",f:"the-stationery.html"},
+ {n:"Evergreen",s:"бордо й зелень",c:"Дарина",c2:"Назар",k:"estate",bg:"linear-gradient(160deg,#2f4030,#5c2230)",fg:"#f0e7d8",ac:"#d8b06a",f:"evergreen.html"},
+ {n:"Ethereal Conservatory",s:"ботанічний зелений",c:"Андрій",c2:"Вероніка",k:"botanical",bg:"linear-gradient(160deg,#e9efe4,#d6e0d0)",fg:"#33473a",ac:"#3F5540",f:"ethereal-conservatory.html"}
+];
+var grid=document.getElementById("grid");
+T.forEach(function(t){
+  var a=document.createElement("a");
+  a.className="tpl rv";a.href=BASE+t.f;a.target="_blank";a.rel="noopener";
+  a.innerHTML=
+   '<div class="thumb" style="background:'+t.bg+';color:'+t.fg+'">'
+    +'<div class="tk" style="color:'+t.ac+'">'+t.k+'</div>'
+    +'<div class="nm">'+t.c+' <span class="amp" style="color:'+t.ac+'">'+(t.am||"&")+'</span> '+t.c2+'</div>'
+    +'<div class="dd">10 · 10 · 26</div>'
+   +'</div>'
+   +'<div class="meta"><span class="n">'+t.n+'</span><span class="go">Демо ↗</span></div>';
+  grid.appendChild(a);
+});
+
+// nav border on scroll
+var nav=document.getElementById("nav");
+addEventListener("scroll",function(){nav.classList.toggle("solid",scrollY>12);},{passive:true});
+
+// reveal
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:.12});
+function watch(){document.querySelectorAll(".rv:not(.in)").forEach(function(el){io.observe(el);});}
+watch();new MutationObserver(watch).observe(grid,{childList:true});
+
+// theme toggle
+var root=document.documentElement,tb=document.getElementById("theme");
+tb.addEventListener("click",function(){
+  var cur=root.getAttribute("data-theme");
+  if(!cur){cur=matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light";}
+  root.setAttribute("data-theme",cur==="dark"?"light":"dark");
+});
+</script>
